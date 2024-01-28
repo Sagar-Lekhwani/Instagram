@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+  </head>
+  <body>
+    <div class="leftMenu">
+      <div class="logo">
+          <a href="#">
+              <img class="instagramTextLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png" alt="">
+          </a>
+      </div>
+
+      <!--LEFT MENU CODES HERE-->
+
+      <ul id="leftMiddle">
+          <li id="home" class="middleMenu">
+            <a href="/home"><i class="fa-solid fa-house"></i>
+              <b>Home</b></a></li>
+          <li id="search" class="middleMenu">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              Search</li>
+          <li id="discover" class="middleMenu">
+              <a href="/explore"><i class="fa-regular fa-compass"></i>Explore</a>
+              </li>
+          <li id="reels" class="middleMenu">
+              <a href="/reels"><i class="fa-solid fa-clapperboard"></i>
+                Reels</a></li>
+          <li id="messages" class="middleMenu">
+              <a href="/m"><i class="fa-brands fa-facebook-messenger"></i>Messages</a>
+              </li>
+          <li id="notifications" class="middleMenu">
+              <i class="fa-regular fa-heart"></i>
+              Notifications</li>
+          <li id="create" class="middleMenu">
+              <i class="fa-regular fa-square-plus"></i>
+              Create</li>
+          <li id="profile" class="middleMenu">
+            <a href="">
+                <i class="fa-regular fa-user"></i>
+                Profile</li>
+            </a>
+          <li id="threads" class="bottomMenu">
+                  <i class="fa-brands fa-threads"></i>
+                  Threads</li>
+          <li id="more" class="bottomMenu">
+                  <i class="fa-solid fa-bars"></i>
+                  More</li>
+      </ul>
+  </div>
+
+  <div class="mobileLeftMenu">
+    <div class="mLogo">
+        <a href="#">
+            <img class="minstagramLogo" src="https://i.pinimg.com/originals/7d/bd/0b/7dbd0b51c20a695901a84c4c083500f6.png" alt="">
+        </a>
+    </div>
+    
+    <!--RESPONSIVE LEFT MENU CODES HERE-->
+    
+        <ul class="mLeftMenu">
+            <li id="mhome" class="mobileBtns">
+                <i class="fa-solid fa-house"></i>
+            </li>
+            <li id="msearch" class="mobileBtns">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </li>
+            <li id="mdiscover" class="mobileBtns">
+                <i class="fa-regular fa-compass"></i>
+            </li>
+            <li id="mreels" class="mobileBtns">
+                <i class="fa-solid fa-clapperboard"></i>
+            </li>
+            <li id="mmessages" class="mobileBtns">
+                <i class="fa-brands fa-facebook-messenger"></i>
+            </li>
+            <li id="mnotifications" class="mobileBtns">
+                <i class="fa-regular fa-heart"></i>
+            </li>
+            <li id="mcreate" class="mobileBtns">
+                <i class="fa-regular fa-square-plus"></i>
+            </li>
+            <li id="mprofile" class="mobileBtns">
+                <i class="fa-regular fa-user"></i>
+            </li>
+            <li id="mbars" class="mbottomMenu">
+                <i class="fa-solid fa-bars"></i>
+            </li>
+        </ul>
+    </div>
+
+  <div class="mobileHeader">
+    <img class="mobileTextLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png" alt="">
+    <input type="text" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+    <i class="fa-regular fa-heart"></i>
+</div>
+
+<div class="mBottomBtns">
+    <ul class="bottomBtns">
+        <li class="bBtns">
+            <i class="fa-solid fa-house"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-regular fa-compass"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-solid fa-clapperboard"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-regular fa-square-plus"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-brands fa-facebook-messenger"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-regular fa-user"></i>
+        </li>
+    </ul>
+</div>
+
+
+
+  <div class="create">
+    <form action="/uploadpost" method="post" enctype="multipart/form-data">
+        <div class="display">
+          <h5>Create new post</h5>
+          <hr>
+          <div id="drag">
+            <img src="../../images/img/drag.png" alt="">
+            <div id="input">
+              Select from your computer
+              <input type="file" id="mediaFile" name="mediaFile" accept="image/*,video/*" value="" >
+            </div>
+          </div>
+        </div>
+          <div class="img">
+            <div id="top">
+              <i class="fa-solid fa-arrow-left" style="color: #121212;"></i>
+              <h4>crop</h4>
+              <h6 id="next">Next</h6>
+              <input id="inp" type="submit" value="Share">
+            </div>
+            <div id="bottom">
+              <div id="left">
+                <img id="img" src="" alt="">
+              </div>
+              <div id="right">
+                <div id="username">
+                  <div id="circle">
+                    <img src="../../images/uploads/def.png" alt="">
+                  </div>
+                  <h6 style="padding-top: .5rem;">username</h6>
+                </div>
+               <textarea name="post" placeholder="Write a caption..."></textarea>
+               <div class="more">
+                <h6>Add Location</h6>
+                <i class="fa-solid fa-location-dot" style="color: #19191a;"></i>
+               </div>
+               <div class="more">
+                <h6>Accessibility</h6>
+                <i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i>
+               </div>
+               <div class="more">
+                <h6>Advance Setting</h6>
+                <i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i>
+               </div>
+              </div>
+            </div>
+          </div>
+          
+    </form>
+  </div>

@@ -1,0 +1,106 @@
+<% include ./partials/navbar.ejs %>
+
+<div class="container py-3">
+
+  <div class="flex">
+    <div class="parentcircle">
+      <div class="pencil"><i class="ri-pencil-line"></i></div>
+      <div class="image">
+        <img src="../images/uploads/<%= founduser.image %>" alt="">
+      </div>
+    </div>
+    <div class="profile_desc">
+      <div class="content">
+        <h4><%= founduser.username %></h4>
+        <a href="/follow/<%=founduser.username%>" class="btn <%= founduser.followers.indexOf(currentuser._id) === -1 ? 'btn-primary' : 'btn-light' %>"><%= founduser.followers.indexOf(currentuser._id) === -1 ? 'Follow' : 'Following' %></a>
+        <a href="#" class="btn btn-light">Message</a>
+        <a href="#" class="btn btn-light"><i class="fa-solid fa-user-plus fa-flip-horizontal" style="color: #121212;"></i></a>
+        <a href="#" class="btn btn-light"><i class="fa-solid fa-ellipsis" style="color: #0c0d0d;"></i></a>
+      </div>
+      <div class="content">
+        <h5><%= founduser.posts.length %> posts</h5>
+        <h5>0 followers</h5>
+        <h5>0 following</h5>
+      </div>
+      <div>
+        <h5><%= founduser.Fullname %></h5>
+        <h6>decription</h6>
+      </div>
+    </div>
+
+</div>
+
+<div class="highlights py-3">
+  <div class="highlights_image">
+    <img src="../images/uploads/def.png" alt="">
+  </div>
+  <div class="highlights_image">
+    <img src="../images/uploads/def.png" alt="">
+  </div>
+</div>
+
+<hr>
+
+<div class="post_types">
+  <h4>posts</h4>
+  <h4><i class="fa-solid fa-clapperboard"></i>reels</h4>
+  <h4>saved</h4>
+  <h4>tagged</h4>
+</div>
+
+<div class="postspro">
+  <% founduser.posts.reverse().forEach(function(post){ %>
+  <div class="elem">
+    <div class="cover">
+      <h6><i class="fa-solid fa-heart" style="color: #fff;"></i><%= post.likes.length %></h6>
+      <h6><i class="fa-solid fa-comment fa-flip-horizontal" style="color: #f6f7f9;"></i></h6>
+    </div>
+    <% const fileName =  post.media ;%>
+    <%  const mimeType = mime.lookup(fileName);%>
+    <% if (mimeType && mimeType.startsWith('image')) { %>
+     <img src="../images/posts/<%= post.media %>" alt="post1">
+     <% } else if (mimeType && mimeType.startsWith('video')) { %>
+       <video src="../images/posts/<%= post.media %>"></video>
+       <% } else { %>
+           <p>Unsupported file type</p>
+           <% } %>
+  </div>
+  <% }) %>
+</div>
+
+</div>
+
+<script>
+
+
+
+    document.querySelector(".pencil")
+        .addEventListener("click", function () {
+          document.querySelector("#fileinp").click();
+        })
+
+        document.querySelector("#fileinp")
+        .addEventListener("change", function () {
+          document.querySelector("#uploadpic").submit();
+        })
+  
+ var postTypesDiv = document.querySelector('.post_types');
+  var previousH4 = null;
+
+  postTypesDiv.querySelectorAll('h4').forEach(function(h4) {
+    h4.addEventListener('click', function() {
+      
+      if (previousH4 !== null) {
+        previousH4.style.borderTop = 'none'; 
+        previousH4.style.color = '#737373'; 
+      }
+
+      h4.style.borderTop = '1px solid black';
+      h4.style.color = '#000084';
+
+      previousH4 = h4;
+    });
+  });
+</script>
+
+<% include ./partials/footer2.ejs %>  

@@ -1,0 +1,199 @@
+<% include ./partials/navbar.ejs %> 
+
+  <!--STORY CODES HERE-->
+  <!-- <div class="story">
+      <ul class="storyArea">
+          <% user.following.reverse().forEach(function (follow) { %>
+          <li class="stories" style="background-image: url('../images/uploads/<%= follow.image %>')">
+              <p><%= follow.username %></p>
+          </li>
+          <% }) %>
+         
+  </div> -->
+  <div class="posts">
+  <div class="demo-stories">
+    <% users.forEach(function (u) {%>
+        <a href="#"><span class="demo-stories-avatar"><img src=
+            "../images/uploads/<%= u.image%>" alt=""></span> <span class=
+            "demo-stories-name"><%= u.username %></span></a> 
+            <%})%>
+  </div>
+
+  <!-- POST CODES HERE -->
+
+
+    <% allpost.reverse().forEach(function (post) { %>
+        <% if(user.following.some(follow => follow.id === post.userid.id)) { %>
+            <div class="post1">
+                <div class="postPP" style="background-image: url('../images/uploads/<%= post.userid.image %>')"></div>
+                <p class="postID"><b><%= post.userid.Fullname %> </b></p>
+                <div class="dots">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <div class="firstpost">
+                    <% const fileName =  post.media ;%>
+                    <%  const mimeType = mime.lookup(fileName);%>
+                    <% if (mimeType && mimeType.startsWith('image')) { %>
+                        <img src="../images/posts/<%= post.media %>" alt="post1">
+                    <% } else if (mimeType && mimeType.startsWith('video')) { %>
+                        <video controls autoplay muted src="../images/posts/<%= post.media %>"></video>
+                    <% } else { %>
+                        <p>Unsupported file type</p>
+                    <% } %>
+                </div>
+                <ul class="reactions">
+                    <div class="icons">
+                        <li><a onclick="likePost('<%= post._id %>')">
+                            <i id="like-icon-<%= post._id %>" class="<%= post.likes.indexOf(user.id) === -1? 'fa-regular fa-heart' : 'fa-solid fa-heart' %>" style="<%= post.likes.indexOf(user.id) === -1 ? 'color: black;' : 'color: #ec0e0e;' %>"></i>
+                        </a></li>
+                        <li><a href="/p/<%= post._id %>" style="text-decoration: none; color: black;"><i class="fa-regular fa-comment"></i></a></li>
+                        <li><i class="fa-regular fa-paper-plane"></i></li>
+                    </div>
+                    <li class="save"><i class="fa-regular fa-bookmark"></i></li>
+                </ul>
+                <h6><span id="like-count-<%= post._id %>"><%= post.likes.length %></span> Likes</h6>
+                <div class="comment">
+                    <h6><%= post.userid.username %> &nbsp; <%= post.data %> </h6>
+                    <span id="comment-length-<%=post._id%>"><% post.comments.reverse().forEach(function (c) { %>
+                      <h6><%= c.text %></h6>
+                      <%})%>
+                    </span>
+                </div>
+                <h6 class="showcomment">View all <span id="comment-<%= post._id %>"><%= post.comments.length %></span> comments</h6>
+                
+                <p class="addComment" ><form action="/comment/<%= post._id %>" method="post" id="<%= post._id %>" class="comment-form"><input placeholder="Add Comment ..." type="text" id="input-<%=post._id%>" name="texted" ><input type="submit" value="Post" id="submit-<%= post._id%>" onclick="commentkaro('<%= post._id%>')"><i class="fa-regular fa-face-smile"></i></form></p>
+                <div class="stick"></div>
+            </div>
+        <% } %>
+    <% }) %>
+
+  <!--SUGGESTED USERS CODES HERE-->
+
+  <div class="rightPanel">
+      <ul class="suggestions">
+          <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
+              <p class="sugUser"><%= user.username %></p>
+              <p class="sugFollow">Switch</p>
+          </li>
+              <p class="sugText" style=" color: rgb(123, 123, 123); font-weight: bold; position: absolute; margin: 1.1rem 0 0 0.5rem; font-size: 0.9rem;">Suggested for you</p>
+              <p class="sugSeeAll" style=" color: rgb(123, 123, 123); font-weight: bold; position: absolute; margin: 1.2rem 0 0 0.5rem; right: 0.7rem; font-size: 0.8rem; cursor: pointer;">See All</p>
+              <br><br>
+              <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
+              <p class="sugUser">user8</p>
+              <p class="sugFollow">Follow</p>
+          </li>
+          <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
+              <p class="sugUser"> user8</p>
+              <p class="sugFollow">Follow</p>
+          </li>
+          <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
+              <p class="sugUser">user8</p>
+              <p class="sugFollow">Follow</p>
+          </li>
+          <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
+              <p class="sugUser">user8</p>
+              <p class="sugFollow">Follow</p>
+          </li>
+          <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
+              <p class="sugUser">user8</p>
+              <p class="sugFollow">Follow</p>
+          </li>
+          <p class="sugLinks">About . Help . Press . API . Jobs . Privacy . Terms . <br> Locations . Language . Meta Verified</p>
+      </ul>
+  </div>
+</div>
+
+
+  <!--RESPONSIVE TOP AND BOTTOM MENU CODES HERE-->
+  <!-- story slider code  -->
+
+  <div class="stories-slider">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- specific user stories -->
+        <% users.forEach(function (u) {%>
+            <% if(u.stories.length > 0) {  %> 
+            <div class="swiper-slide">
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <!-- user's single story -->
+                  
+                  <% u.stories.forEach(function (story) {%>
+                
+                    <div class="swiper-slide">
+                      <a href="#" class="stories-slider-user">
+                      <div class="stories-slider-user-avatar">
+                        <img src="../images/uploads/<%= u.image %>"></div>
+                      <div class="stories-slider-user-name">
+                        <%= u.username%>
+                      </div>
+                      <div class="stories-slider-user-date">
+                        21h
+                      </div></a>
+                      <div class="stories-slider-actions">
+                        <button class="stories-slider-close-button"></button>
+                      </div>
+                      <div class="stories-slider-content">
+                        <% const fileName =  story.media ;%>
+                        <%  const mimeType = mime.lookup(fileName);%>
+                        <% if (mimeType && mimeType.startsWith('image')) { %>
+                        <img src="../images/stories/<%= story.media%>">
+                        <% } else  { %>
+                        <video src="../images/stories/<%= story.media %>" playsinline preload="metadata"></video>
+                        <% } %>
+                        </div>
+                    </div>
+                    <%})%>
+                </div>
+              </div>
+            </div>
+            <% } %>
+            <%})%>
+      </div>
+    </div>
+  </div>
+
+
+  <!--THE END-->
+
+  <script>
+
+function commentkaro(postid) {
+      document.getElementById(`${postid}`).addEventListener('submit', (e) => {
+        e.preventDefault();
+        var texted = document.getElementById(`input-${postid}`).value;
+        var commenlen = document.getElementById(`comment-${postid}`)
+        var btn = document.getElementById(`submit-${postid}`)
+        axios.post(`/comment/${postid}`, {texted}).then((response)=> {
+          commenlen.textContent = response.data.comments.length;
+          btn.style.display = 'none'
+        })
+      })
+    }
+
+    document.querySelector('.posts').addEventListener('click', (e) => {
+      if(e.target.name === 'texted')
+      {
+        var en = e.target.id.replace('input','submit')
+        document.getElementById(e.target.id).addEventListener('change',() =>{
+          if(e.target.value.length > 0){
+            document.getElementById(en).style.display = 'inline';
+            console.log(en)
+          }
+          else{
+            document.getElementById(en).style.display = 'none';
+
+          }
+        })
+        
+      }
+    })
+
+
+    document.querySelector("#leftMiddle #profile a").setAttribute(`href`,`/user/<%= user.username %>`);
+  </script>
+  
+  <script src="../javascripts/script.js"></script>
+
+
+  <% include ./partials/footer2.ejs %> 

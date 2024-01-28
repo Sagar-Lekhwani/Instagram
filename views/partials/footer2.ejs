@@ -1,0 +1,100 @@
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<script>
+
+  
+  document.querySelector("#input")
+        .addEventListener("click", function () {
+          document.querySelector("#input input").click();
+        })
+
+        document.querySelector("#input input")
+        .addEventListener("change", function () {
+          document.querySelector(".create form .display").style.display = "none";
+          document.querySelector(".create form .img").style.display = "initial";
+        })
+
+        document.querySelector('.create form #top h6').
+        addEventListener('click', function () {
+          document.querySelector(".create form").style.width = "58vw";
+          document.querySelector(".create form #bottom #right").style.display = "initial";
+          document.querySelector(".create form #bottom #left").style.width = "60%";
+          document.querySelector(".create form #top #inp").style.display = "block";
+          document.querySelector(".create form #top #next").style.display = "none";
+          document.querySelector(".create form #top h4").textContent = "Create new Post";
+          
+        })
+
+
+        const mediaFile = document.getElementById('mediaFile');
+        const img = document.getElementById('img');
+
+        mediaFile.addEventListener('change', () => {
+        const file = mediaFile.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+        img.src = reader.result;
+        };
+
+  reader.readAsDataURL(file);
+});
+    // Function to handle the like action
+    function likePost(postId) {
+      // Make a PUT request to the server using Axios
+      axios.post(`/like/${postId}`)
+        .then(response => {
+          if (response.data.success) {
+            console.log(response)
+            console.log(response.data.likes.length)
+            // Update the like button color based on the response
+            const likeIcon = document.getElementById(`like-icon-${postId}`);
+            const likeCount = document.getElementById(`like-count-${postId}`);
+            if (likeIcon.classList.contains('fa-regular')) {
+              likeIcon.classList.remove('fa-regular');
+              likeIcon.classList.add('fa-solid');
+              likeIcon.style.color = '#ec0e0e';
+              likeCount.textContent = response.data.likes.length;
+            } else {
+              likeIcon.classList.remove('fa-solid');
+              likeIcon.classList.add('fa-regular');
+              likeIcon.style.color = 'black';
+              likeCount.textContent = response.data.likes.length;
+            }
+          } else {
+            console.log('Error: ' + response.data.message);
+          }
+        })
+        .catch(error => {
+          console.log('Error: ' + error);
+        });
+    }
+    
+    
+    // function ondisplay(postid) {
+    //   if(document.querySelector(`#input-${postid}`).value.length > 0){
+    //     document.querySelector(`#submit-${postid}`).style.display = 'inline';
+    //     console.log(document.querySelector(`#submit-${postid}`).value)
+    //   }
+    // }
+    
+
+  </script>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+
+document.querySelector("#leftMiddle #create").addEventListener("click",function(){
+      document.querySelector(".create").style.display = "flex";
+});
+document.querySelector(".bBtns .fa-square-plus").addEventListener("click",function(){
+      document.querySelector(".create").style.display = "flex";
+});
+  
+</script>
+
+</body>
+</html>

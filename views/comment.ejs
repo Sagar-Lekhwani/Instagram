@@ -1,0 +1,47 @@
+<% include ./partials/navbar.ejs %>
+
+<div id="Box">
+    <div id="cross"><a href="/home"><i class="fa-solid fa-xmark" style="color: #fefbfb;"></i></a></div>
+    <div id="view">
+        <div id="postimg">
+            <% const fileName =  post.media ;%>
+            <%  const mimeType = mime.lookup(fileName);%>
+            <% if (mimeType && mimeType.startsWith('image')) { %>
+            <img src="../images/posts/<%= post.media %>" alt="#">
+            <% } else if (mimeType && mimeType.startsWith('video')) { %>
+                <video muted src="../images/posts/<%= post.media %>" alt="#"> 
+            <% } %>
+        </div>
+        <div id="postdesc">
+            <div id="userdesc">
+                <div class="postPP" style="background-image: url('../images/uploads/<%= post.userid.image %>')"></div>
+                <p class="postID"><b><%= post.userid.Fullname %> </b></p>
+                <div class="dots">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div id="postdata">
+                <!-- <%= post.data %> -->
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet corporis illum iusto eaque est debitis, ducimus dolorem ullam. Delectus molestias cumque excepturi iure facere blanditiis unde deleniti? Commodi, magnam iusto?
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet corporis illum iusto eaque est debitis, ducimus dolorem ullam. Delectus molestias cumque excepturi iure facere blanditiis unde deleniti? Commodi, magnam iusto?
+            </div>
+            <ul class="reactions">
+                <div class="icons">
+                    <li><a onclick="likePost('<%= post._id %>')">
+                        <i id="like-icon-<%= post._id %>" class="<%= post.likes.indexOf(user.id) === -1? 'fa-regular fa-heart' : 'fa-solid fa-heart' %>" style="<%= post.likes.indexOf(user.id) === -1 ? 'color: black;' : 'color: #ec0e0e;' %>"></i>
+                    </a></li>
+                    <li><a href="/p/<%= post._id %>" style="text-decoration: none; color: black;"><i class="fa-regular fa-comment"></i></a></li>
+                    <li><i class="fa-regular fa-paper-plane"></i></li>
+                </div>
+                <li class="save"><i class="fa-regular fa-bookmark"></i></li>
+            </ul>
+            <div id="liked">
+                like by sagar Lekhwani
+            </div>
+            <div id="commentkaro"><i class="fa-regular fa-face-smile" style="color: #111212;"></i>
+            <input type="text" placeholder="Add comment ..."><span>Post</span></div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer2.ejs %>

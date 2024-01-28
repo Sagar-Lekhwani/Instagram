@@ -1,0 +1,92 @@
+<% include ./partials/navbar.ejs %>  
+<div class="container">
+    <div class="reel2">
+        <% allpost.reverse().forEach(function (post) { %>
+            <% const fileName =  post.media ;%>
+            <%  const mimeType = mime.lookup(fileName);%>
+            <% if (mimeType && mimeType.startsWith('video')) { %>
+                <div class="reel2-video">
+                    <button class="masterMuteToggle"><i class="fa-solid fa-volume-high"></i><i class="fa-solid fa-slash"></i></button>
+                    <div class="reel2-vid">
+                        <video muted loop class="reel-video" src="../images/posts/<%= post.media %>"></video>
+                    </div>
+                    <div class="ic">
+                        <a onclick="likePost('<%= post._id %>')">
+                            <i id="like-icon-<%= post._id %>" class="<%= post.likes.indexOf(user.id) === -1? 'fa-regular fa-heart' : 'fa-solid fa-heart' %>" style="<%= post.likes.indexOf(user.id) === -1 ? 'color: black;' : 'color: #ec0e0e;' %>"></i>
+                        </a>
+                        <i class="fa-regular fa-comment"></i>
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    document.querySelector("#leftMiddle #profile a").setAttribute('href', '/user/<%= user.username %>');
+    
+    $(document).ready(function () {
+        const reelElement = $('.reel2');
+        let currentPlayingIndex = 0;
+        let masterMuted = false; // Add this line to declare masterMuted variable
+    
+        function stopAllVideos() {
+            $('.reel2-video video').each(function () {
+                this.pause();
+                this.currentTime = 0;
+            });
+        }
+    
+        function playVideo(index) {
+            const video = $('.reel2-video video')[index];
+            video.play();
+        }
+    
+        function handleReelScroll() {
+            $('.reel2-video').each(function (index) {
+                const reelVideoElement = $(this);
+                const rect = reelVideoElement[0].getBoundingClientRect();
+    
+                if (rect.top === 0 && rect.bottom === reelElement.height()) {
+                    return;
+                }
+    
+                if (rect.top >= 0 && rect.bottom <= reelElement.height()) {
+                    stopAllVideos();
+                    playVideo(index);
+                    currentPlayingIndex = index;
+                }
+            });
+        }
+    
+        reelElement.scroll(handleReelScroll);
+        playVideo(currentPlayingIndex);
+    
+        const masterMuteToggle = $('.masterMuteToggle');
+    
+        function toggleMasterMute() {
+            const videos = $('.reel2-video video');
+            videos.each(function () {
+                this.muted = !this.muted;
+            });
+    
+            masterMuted = !masterMuted;
+            masterMuteToggle.toggleClass('masterMuted', masterMuted);
+    
+            // Toggle the display of fa-slash based on the mute state
+            $('.fa-slash').toggle(!masterMuted);
+        }
+    
+        masterMuteToggle.click(function () {
+            toggleMasterMute();
+        });
+    });
+    
+    </script>
+    
+<% include ./partials/footer2.ejs %>

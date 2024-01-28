@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/home.css">
+  </head>
+  <body>
+    
+
+  <div class="mobileLeftMenu">
+    <div class="mLogo">
+        <a href="#">
+            <img class="minstagramLogo" src="https://i.pinimg.com/originals/7d/bd/0b/7dbd0b51c20a695901a84c4c083500f6.png" alt="">
+        </a>
+    </div>
+    
+    <!--RESPONSIVE LEFT MENU CODES HERE-->
+    
+        <ul class="mLeftMenu">
+            <li id="mhome" class="mobileBtns">
+                <i class="fa-solid fa-house"></i>
+            </li>
+            <li id="msearch" class="mobileBtns">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </li>
+            <li id="mdiscover" class="mobileBtns">
+                <i class="fa-regular fa-compass"></i>
+            </li>
+            <li id="mreels" class="mobileBtns">
+                <i class="fa-solid fa-clapperboard"></i>
+            </li>
+            <li id="mmessages" class="mobileBtns">
+                <i class="fa-brands fa-facebook-messenger"></i>
+            </li>
+            <li id="mnotifications" class="mobileBtns">
+                <i class="fa-regular fa-heart"></i>
+            </li>
+            <li id="mcreate" class="mobileBtns">
+                <i class="fa-regular fa-square-plus"></i>
+            </li>
+            <li id="mprofile" class="mobileBtns">
+                <i class="fa-regular fa-user"></i>
+            </li>
+            <li id="mbars" class="mbottomMenu">
+                <i class="fa-solid fa-bars"></i>
+            </li>
+        </ul>
+    </div>
+
+  <div class="mobileHeader">
+    <img class="mobileTextLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png" alt="">
+    <input type="text" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+    <i class="fa-regular fa-heart"></i>
+</div>
+
+<div class="mBottomBtns">
+    <ul class="bottomBtns">
+        <li class="bBtns">
+            <i class="fa-solid fa-house"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-regular fa-compass"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-solid fa-clapperboard"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-regular fa-square-plus"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-brands fa-facebook-messenger"></i>
+        </li>
+        <li class="bBtns">
+            <i class="fa-regular fa-user"></i>
+        </li>
+    </ul>
+</div>
+
+
+<div class="create">
+  <form action="/uploadpost" method="post" enctype="multipart/form-data">
+      <div class="display">
+        <h5>Create new post</h5>
+        <hr>
+        <div id="drag">
+          <img src="../images/uploads/def.png" alt="">
+          <div id="input">
+            Select from your computer
+            <input type="file" id="mediaFile" name="mediaFile" accept="image/*,video/*" value="" >
+          </div>
+        </div>
+      </div>
+        <div class="img">
+          <div id="top">
+            <i class="fa-solid fa-arrow-left" style="color: #121212;"></i>
+            <h4>crop</h4>
+            <h6 id="next">Next</h6>
+            <input id="inp" type="submit" value="Share">
+          </div>
+          <div id="bottom">
+            <div id="left">
+              <img id="img" src="" alt="">
+            </div>
+            <div id="right">
+              <div id="username">
+                <div id="circle">
+                  <img src="../../images/uploads/def.png" alt="">
+                </div>
+                <h6 style="padding-top: .5rem;">username</h6>
+              </div>
+             <textarea name="post" placeholder="Write a caption..."></textarea>
+             <div class="more">
+              <h6>Add Location</h6>
+              <i class="fa-solid fa-location-dot" style="color: #19191a;"></i>
+             </div>
+             <div class="more">
+              <h6>Accessibility</h6>
+              <i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i>
+             </div>
+             <div class="more">
+              <h6>Advance Setting</h6>
+              <i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i>
+             </div>
+            </div>
+          </div>
+        </div>
+        
+  </form>
+</div>
+
+<div id="messagebox">
+    <div class="messagepanel">
+        <div id="userinfo">
+            <div id="user">lekhwani78<i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i></div>
+            <i class="fa-regular fa-pen-to-square" style="color: #171717;"></i>
+        </div>
+        <div id="userinfo">
+            <h5>Messages</h5>
+            <h6>Requests</h6>
+        </div>
+        <div id="musers">
+          <% allusers.forEach(function (use) {  %>
+            <div class="musers">
+                <div id="photo"><img src="../images/uploads/def.png" alt=""></div>
+                <h5><a href="/chat/<%= use.id %>"><%= use.Fullname %></a></h5>
+                <% if(use.is_online) {  %>
+                  <sup class="online" id="<%= use.id %>-status">Online</sup>
+                  <% } else { %>
+                    <sup class="offline" id="<%= use.id %>-status">Offline</sup>
+                    <% } %>
+            </div>
+            <% }) %>
+            
+        </div>
+    </div>
+    <div class="messages">
+        
+    </div>
+</div>
+
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var SenderId = '<%= user.id %>';
+    // console.log(SenderId);
+    var socket = io('/user-namespace' , {
+      auth: {
+        token : '<%= user.id %>'
+      }
+    });
+
+    //update status online
+    socket.on('getonlineuser', function(data) {
+      $('#'+data.user_id+'-status').text('Online');
+      $('#'+data.user_id+'-status').removeClass('offline');
+      $('#'+data.user_id+'-status').addClass('online');
+    })
+
+    //update status offline
+    socket.on('getofflineuser', function(data) {
+      $('#'+data.user_id+'-status').text('Offline');
+      $('#'+data.user_id+'-status').removeClass('online');
+      $('#'+data.user_id+'-status').addClass('offline');
+    })
+</script>
+
+</body>
+</html>

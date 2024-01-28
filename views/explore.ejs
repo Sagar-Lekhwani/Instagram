@@ -1,0 +1,29 @@
+<% include ./partials/navbar.ejs %>
+
+<div class="container">
+   
+    <div class="postspro">
+        <% allpost.reverse().forEach(function(post){ %>
+        <div class="elem">
+          <div class="cover">
+            <h6><i class="fa-solid fa-heart" style="color: #fff;"></i><%= post.likes.length %></h6>
+            <h6><i class="fa-solid fa-comment fa-flip-horizontal" style="color: #f6f7f9;"></i></h6>
+          </div>
+          <% const fileName =  post.media ;%>
+          <%  const mimeType = mime.lookup(fileName);%>
+          <% if (mimeType && mimeType.startsWith('image')) { %>
+           <img src="../images/posts/<%= post.media %>" alt="post1">
+           <% } else if (mimeType && mimeType.startsWith('video')) { %>
+             <video src="../images/posts/<%= post.media %>"></video>
+             <% } else { %>
+                 <p>Unsupported file type</p>
+                 <% } %>
+        </div>
+        <% }) %>
+      </div>
+</div>
+<script>
+  document.querySelector("#leftMiddle #profile a").setAttribute(`href`,`/user/<%= user.username %>`);
+</script>
+
+<% include ./partials/footer2.ejs %>
