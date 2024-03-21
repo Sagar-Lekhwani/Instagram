@@ -715,14 +715,38 @@ input{
   align-items: center;
   gap: 4%;
   width: 100%;
-  height: 10%;
+  height: 15%;
+  padding-left: 5%;
+  position: relative;
   /* border: 1px solid black; */
 }
 
 .musers #photo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+}
+
+.musers:hover {
+  background-color: rgba(74, 73, 73, 0.075);
+  
+}
+
+.musers .opened {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(74, 73, 73, 0.075);
+  /* pointer-events: none; */
+  z-index: -1;
+  
+}
+
+.musers h5 a {
+  color: black;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 
 #photo img {
@@ -778,10 +802,10 @@ input{
 #chatuser #chatuserinfo {
   width: 26%;
   height: 100%;
-  /* background-color: lightcyan; */
   display: flex;
+  padding-left: 1rem;
   align-items: center;
-  justify-content: center;
+  text-transform: capitalize;
   gap: 1rem;
 }
 
@@ -823,11 +847,15 @@ input{
   justify-content: flex-end; /* Add this line */
 }
 
-
+.mLeftMenu a {
+  text-decoration: none;
+  color: black;
+}
 
 .sendchats {
   width: 100%;
   height: fit-content;
+  margin-top: 5px;
   /* background-color: royalblue; */
   display: flex;
   flex-direction: row-reverse;

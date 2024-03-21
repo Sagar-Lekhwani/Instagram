@@ -38,7 +38,7 @@ html,body{
   margin-left: 10%;
   margin-top: 1%;
   /* width: 68%; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
 }
@@ -99,6 +99,9 @@ html,body{
   border: 4px solid #dedede;
   overflow: hidden;
   padding: .1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .highlights_image img{
@@ -107,6 +110,11 @@ html,body{
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+}
+
+.highlights_image i {
+  font-size: 2.7rem;
+  font-weight: 100;
 }
 
 .post_types {
@@ -1028,7 +1036,7 @@ input{
   .bottomBtns{
     display: none;
   }.container .flex{
-    width: 68%;
+    width: 78%;
   }
   .demo-stories{
     width: 74%;

@@ -136,7 +136,7 @@
 <div id="messagebox">
     <div class="messagepanel">
         <div id="userinfo">
-            <div id="user">lekhwani78<i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i></div>
+            <div id="user"><%= user.username %><i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i></div>
             <i class="fa-regular fa-pen-to-square" style="color: #171717;"></i>
         </div>
         <div id="userinfo">
@@ -144,15 +144,18 @@
             <h6>Requests</h6>
         </div>
         <div id="musers">
-          <% allusers.forEach(function (use) {  %>
+          <% user.following.forEach(function (use) {  %>
             <div class="musers">
                 <div id="photo"><img src="../images/uploads/def.png" alt=""></div>
                 <h5><a href="/chat/<%= use.id %>" id="<%= use.id %>" onclick="call(`<%= use.id %>`)"><%= use.Fullname %></a></h5>
                 <% if(use.is_online) {  %>
-                  <sup class="online" id="<%= use.id %>-status">Online</sup>
+                  <sup class="online" id="<%= use.id %>-status"></sup>
                   <% } else { %>
-                    <sup class="offline" id="<%= use.id %>-status">Offline</sup>
+                    <sup class="offline" id="<%= use.id %>-status"></sup>
                     <% } %>
+                    <%if(use.username === chatuser.username) {%>
+                      <div class="opened"></div>   
+                      <%}%>
             </div>
             <% }) %>
             

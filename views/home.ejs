@@ -12,7 +12,7 @@
   </div> -->
   <div class="posts">
   <div class="demo-stories">
-    <% users.forEach(function (u) {%>
+    <% user.following.forEach(function (u) {%>
         <a href="#"><span class="demo-stories-avatar"><img src=
             "../images/uploads/<%= u.image%>" alt=""></span> <span class=
             "demo-stories-name"><%= u.username %></span></a> 
@@ -26,7 +26,7 @@
         <% if(user.following.some(follow => follow.id === post.userid.id)) { %>
             <div class="post1">
                 <div class="postPP" style="background-image: url('../images/uploads/<%= post.userid.image %>')"></div>
-                <p class="postID"><b><%= post.userid.Fullname %> </b></p>
+                <p class="postID"><a style="text-decoration: none; color: black;" href="/user/<%= post.userid.username %>"><%= post.userid.Fullname %> </a></p>
                 <div class="dots">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
@@ -78,24 +78,25 @@
               <p class="sugText" style=" color: rgb(123, 123, 123); font-weight: bold; position: absolute; margin: 1.1rem 0 0 0.5rem; font-size: 0.9rem;">Suggested for you</p>
               <p class="sugSeeAll" style=" color: rgb(123, 123, 123); font-weight: bold; position: absolute; margin: 1.2rem 0 0 0.5rem; right: 0.7rem; font-size: 0.8rem; cursor: pointer;">See All</p>
               <br><br>
+              
               <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
-              <p class="sugUser">user8</p>
+              <p class="sugUser">user1</p>
               <p class="sugFollow">Follow</p>
           </li>
           <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
-              <p class="sugUser"> user8</p>
+              <p class="sugUser"> user2</p>
               <p class="sugFollow">Follow</p>
           </li>
           <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
-              <p class="sugUser">user8</p>
+              <p class="sugUser">user3</p>
               <p class="sugFollow">Follow</p>
           </li>
           <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
-              <p class="sugUser">user8</p>
+              <p class="sugUser">user4</p>
               <p class="sugFollow">Follow</p>
           </li>
           <li class="sugProfile" style="background-image: url('../images/uploads/def.png')">
-              <p class="sugUser">user8</p>
+              <p class="sugUser">user5</p>
               <p class="sugFollow">Follow</p>
           </li>
           <p class="sugLinks">About . Help . Press . API . Jobs . Privacy . Terms . <br> Locations . Language . Meta Verified</p>

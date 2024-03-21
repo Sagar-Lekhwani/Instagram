@@ -303,14 +303,14 @@ router.post('/uploadstory', IsLoggedIn, upload3.single("mediaFile"), function (r
       user.save()
       .then(function () {
         // Schedule the deletion after 2 minutes
-        // setTimeout(function() {
+        setTimeout(function() {
         //   // Delete the pic field from the founduser
-        //   user.stories.splice(user.stories.indexOf(story._id), 1)
-        //   user.save()
-        //     .then(function() {
-        //       console.log('story deleted');
-        //     });
-        // }, 1 * 60 * 1000); 
+          user.stories.splice(user.stories.indexOf(story._id), 1)
+          user.save()
+            .then(function() {
+              console.log('story deleted');
+            });
+        }, 1 * 60 * 1000); 
           res.redirect('back');
   });
     });
@@ -328,8 +328,8 @@ router.get('/home',IsLoggedIn, function(req,res,next) {
           userModel.find({username : {$nin:[user.username]}})
           .populate('stories')
           .then(function(users){
-            var count = 1
-            res.render("home", { allpost, user,users, mime , count });
+            // var count = 1
+            res.render("home", { allpost, user,users, mime });
           })
         });
     })
@@ -390,6 +390,7 @@ router.get('/p/:id',IsLoggedIn, function (req,res,next) {
 
 router.get('/m',IsLoggedIn, function(req,res,next){
   userModel.findOne({username : req.session.passport.user})
+  .populate('following')
   .then(async function (user) {
    await userModel.find({username : {$nin:[user.username]}}).then(function (allusers) {
       console.log(user.id)
@@ -402,6 +403,7 @@ router.get('/m',IsLoggedIn, function(req,res,next){
 
 router.get('/chat/:id', IsLoggedIn, function (req,res,next) {
   userModel.findOne({username : req.session.passport.user})
+  .populate('following')
   .then(async function (user) {
    await userModel.find({username : {$nin:[user.username]}}).then(async function (allusers) {
     await userModel.findOne({_id:req.params.id}).then(function (chatuser) {

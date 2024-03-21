@@ -22,32 +22,32 @@
     <!--RESPONSIVE LEFT MENU CODES HERE-->
     
         <ul class="mLeftMenu">
-            <li id="mhome" class="mobileBtns">
-                <i class="fa-solid fa-house"></i>
+            <li  id="mhome" class="mobileBtns">
+              <a href="/home"><i class="fa-solid fa-house"></i></a>
             </li>
             <li id="msearch" class="mobileBtns">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
             </li>
             <li id="mdiscover" class="mobileBtns">
-                <i class="fa-regular fa-compass"></i>
+                <a href="/explore"><i class="fa-regular fa-compass"></i></a>
             </li>
             <li id="mreels" class="mobileBtns">
-                <i class="fa-solid fa-clapperboard"></i>
+                <a href="/reels"><i class="fa-solid fa-clapperboard"></i></a>
             </li>
             <li id="mmessages" class="mobileBtns">
-                <i class="fa-brands fa-facebook-messenger"></i>
+                <a href="/m"><i class="fa-brands fa-facebook-messenger"></i></a>
             </li>
             <li id="mnotifications" class="mobileBtns">
-                <i class="fa-regular fa-heart"></i>
+                <a href=""><i class="fa-regular fa-heart"></i></a>
             </li>
             <li id="mcreate" class="mobileBtns">
-                <i class="fa-regular fa-square-plus"></i>
+                <a href=""><i class="fa-regular fa-square-plus"></i></a>
             </li>
             <li id="mprofile" class="mobileBtns">
-                <i class="fa-regular fa-user"></i>
+                <a href=""><i class="fa-regular fa-user"></i></a>
             </li>
             <li id="mbars" class="mbottomMenu">
-                <i class="fa-solid fa-bars"></i>
+                <a href=""><i class="fa-solid fa-bars"></i></a>
             </li>
         </ul>
     </div>
@@ -136,7 +136,7 @@
 <div id="messagebox">
     <div class="messagepanel">
         <div id="userinfo">
-            <div id="user">lekhwani78<i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i></div>
+            <div id="user"><%= user.username %><i class="fa-solid fa-chevron-down" style="color: #0d0d0d;"></i></div>
             <i class="fa-regular fa-pen-to-square" style="color: #171717;"></i>
         </div>
         <div id="userinfo">
@@ -144,14 +144,14 @@
             <h6>Requests</h6>
         </div>
         <div id="musers">
-          <% allusers.forEach(function (use) {  %>
+          <% user.following.forEach(function (use) {  %>
             <div class="musers">
                 <div id="photo"><img src="../images/uploads/def.png" alt=""></div>
                 <h5><a href="/chat/<%= use.id %>"><%= use.Fullname %></a></h5>
                 <% if(use.is_online) {  %>
-                  <sup class="online" id="<%= use.id %>-status">Online</sup>
+                  <sup class="online" id="<%= use.id %>-status"></sup>
                   <% } else { %>
-                    <sup class="offline" id="<%= use.id %>-status">Offline</sup>
+                    <sup class="offline" id="<%= use.id %>-status"></sup>
                     <% } %>
             </div>
             <% }) %>
