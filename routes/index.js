@@ -303,14 +303,14 @@ router.post('/uploadstory', IsLoggedIn, upload3.single("mediaFile"), function (r
       user.save()
       .then(function () {
         // Schedule the deletion after 2 minutes
-        setTimeout(function() {
-        //   // Delete the pic field from the founduser
-          user.stories.splice(user.stories.indexOf(story._id), 1)
-          user.save()
-            .then(function() {
-              console.log('story deleted');
-            });
-        }, 1 * 60 * 1000); 
+        // setTimeout(function() {
+        // //   // Delete the pic field from the founduser
+        //   user.stories.splice(user.stories.indexOf(story._id), 1)
+        //   user.save()
+        //     .then(function() {
+        //       console.log('story deleted');
+        //     });
+        // }, 1 * 60 * 1000); 
           res.redirect('back');
   });
     });

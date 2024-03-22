@@ -1,4 +1,7 @@
 <% include ./partials/navbar.ejs %>
+<form id="uploadpic" action="/upload" method="post" enctype="multipart/form-data">
+  <input id="fileinp" type="file" name="image">
+</form>
 
 <div class="container py-3">
 
@@ -69,15 +72,15 @@
 <script>
 
   
-// document.querySelector(".pencil")
-//         .addEventListener("click", function () {
-//           document.querySelector("#fileinp").click();
-//         })
+document.querySelector(".pencil")
+        .addEventListener("click", function () {
+          document.querySelector("#fileinp").click();
+        })
 
-//         document.querySelector("#fileinp")
-//         .addEventListener("change", function () {
-//           document.querySelector("#uploadpic").submit();
-//         })
+        document.querySelector("#fileinp")
+        .addEventListener("change", function () {
+          document.querySelector("#uploadpic").submit();
+        })
 
 document.querySelector("#leftMiddle #profile a").setAttribute(`href`,`/user/<%= founduser.username %>`);
 
