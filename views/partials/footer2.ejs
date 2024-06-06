@@ -93,7 +93,20 @@ document.querySelector("#leftMiddle #create").addEventListener("click",function(
 document.querySelector(".bBtns .fa-square-plus").addEventListener("click",function(){
       document.querySelector(".create").style.display = "flex";
 });
-  
+
+const logouthandle = document.querySelector("#leftMiddle #more");
+// const logoutcard = document.querySelector("#logoutcard");
+let handler = true
+logouthandle.addEventListener("click",function(){
+ if(!handler) {
+  document.querySelector("#logoutcard").style.display = 'none';
+  handler = true;
+}
+else{
+  document.querySelector("#logoutcard").style.display = 'flex';
+  handler = false;
+ }
+});
 </script>
 
 </body>

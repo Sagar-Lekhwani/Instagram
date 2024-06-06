@@ -291,7 +291,7 @@ router.get('/uploadstory', IsLoggedIn, upload3.single("mediaFile"), function (re
 });
 router.post('/uploadstory', IsLoggedIn, upload3.single("mediaFile"), function (req, res, next) {
   userModel.findOne({
-    username:req.session.passport.user
+    username:req.session.passport.user  
    })
    .then(function (user) {
     storyModel.create({

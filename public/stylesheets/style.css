@@ -471,6 +471,30 @@ input{
 }
 
 
+/* logutcard code  */
+#logoutcard {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: start;
+  padding-top: 10px;
+  flex-direction: column;
+  bottom: 9%;
+  left: 5%;
+  width: 150px;
+  height: 180px;
+  background-color: red;
+}
+
+#logoutcard h2 {
+  font-size: 1.5rem;
+}
+
+#logoutcard h2 a {
+  text-decoration: none;
+  color: black;
+}
+
 /* STORY CODES HERE */
 
 /* .story {
